@@ -1,1 +1,4 @@
 fastapi[standard]
+uvicorn[standard]
+SQLAlchemy
+sqlmodel
