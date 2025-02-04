@@ -24,7 +24,9 @@
 ## 6. Runing the FASTAPI Application locally
 ###### uvicorn main:app --reload or python3 main.py
 ###### http://127.0.0.1:8000/docs or http://127.0.0.1:8000/redoc
-## 7. Schema Use to 
+## 7. Creating Schema to send a POST Request
+## 8. Adding database.py file to build the connection for sqlalchemy
+## 9. Creating models.py file for database model respectively.
 
 ## Key Features
 ###### Learning the path operation (routes) like get, post
