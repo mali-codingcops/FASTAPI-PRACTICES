@@ -1,6 +1,6 @@
 from InventoryManagement.databases import Base
-from sqlalchemy import Column, String, Integer
-
+from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy.orm import relationship
 class Product(Base):
     
     __tablename__ = "Product"
@@ -9,4 +9,7 @@ class Product(Base):
     prodcut_name = Column(String)
     price = Column(Integer)
     stock = Column(Integer)
-    category_id = Column(Integer)
+    category_id = Column(Integer, ForeignKey('Category.id'))
+    category = relationship('Category', back_populates= 'product')
+
+  
