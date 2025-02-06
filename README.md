@@ -1,5 +1,7 @@
 # FAST API PRACTICES Project
 
+![Project FASTAPI](./assets/images/logo.png)
+
 ## The following operation and command are used while creating this project.
 ## 1. Creating and setting up the github repository
 ###### git config --global user.email "you@example.com"
@@ -40,6 +42,12 @@
 ###### 9.4 validating the Required Schema as needed. such Product_name Shouldn't empty, stock can't be negative number 9.5 using pydantic field_validator
 
 ## 10. Creating the Category Entity:
+###### 10.1 Path Operation and cateogry schemas, models, APIRouter, include router
+###### GET /category/get_category
+###### POST /category/create_category/
+###### DELETE /category/delete_category/
+
+## 11. Creating Building the ORM Relations ONE To Many between Product and Category table.
 
 ## Key Features
 ###### Learning the path operation (routes) like get, post
