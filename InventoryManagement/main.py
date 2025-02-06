@@ -1,13 +1,14 @@
 from fastapi import FastAPI, Depends
 from .databases import engine, get_db
 from sqlalchemy.orm import Session
-from .routers import product
+from .routers import product, category
 from InventoryManagement import models
 
 
 app = FastAPI()
 models.product.Base.metadata.create_all(engine)
 app.include_router(product.router)
+app.include_router(category.router)
 
 @app.get("/about")
 def about():

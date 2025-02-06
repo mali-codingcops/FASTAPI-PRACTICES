@@ -39,6 +39,8 @@
 ###### 9.3 Handling the status code with HTTPException.
 ###### 9.4 validating the Required Schema as needed. such Product_name Shouldn't empty, stock can't be negative number 9.5 using pydantic field_validator
 
+## 10. Creating the Category Entity:
+
 ## Key Features
 ###### Learning the path operation (routes) like get, post
 ###### Daynamic routes paths e.g /item/{id}
