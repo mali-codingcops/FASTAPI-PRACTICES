@@ -24,9 +24,20 @@
 ## 6. Runing the FASTAPI Application locally
 ###### uvicorn main:app --reload or python3 main.py
 ###### http://127.0.0.1:8000/docs or http://127.0.0.1:8000/redoc
-## 7. Creating Schema to send a POST Request
-## 8. Adding database.py file to build the connection for sqlalchemy
-## 9. Creating models.py file for database model respectively.
+###### Creating Schema to send a POST Request
+###### Adding database.py file to build the connection for sqlalchemy
+###### Creating models.py file for database model respectively.
+## 7. Creating a separate branch for products router e.g. product_branch
+## 8. Modifying the Project Structure. Created folder like Curd, Models, Schemas, Routers Using APIRouter and include_router functionality.
+## 9. Creating the Product Entity:
+###### 9.1 Path Operation e.g. 
+###### POST /product/products/
+###### GET /product/get_products/
+###### GET /product/get_products/{product_id}/
+
+###### 9.2 Performaning the CURD Operation like Create, READ, UPdate, Delete
+###### 9.3 Handling the status code with HTTPException.
+###### 9.4 validating the Required Schema as needed. such Product_name Shouldn't empty, stock can't be negative number 9.5 using pydantic field_validator
 
 ## Key Features
 ###### Learning the path operation (routes) like get, post
