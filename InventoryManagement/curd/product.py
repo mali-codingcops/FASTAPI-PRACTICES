@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from InventoryManagement.models.product import Product
-from InventoryManagement.schemas.product import ProductCreate
+from InventoryManagement.schemas.product import ProductCreate, ProductBase
 
 
 def add_product(db: Session, product: ProductCreate):
@@ -16,15 +16,15 @@ def get_product(db: Session):
 def get_product_id(db: Session, product_id: int):
     return db.query(Product).filter(Product.id == product_id).first()
 
-def update_product(product: Product, db: Session):
+def update_product(product_id: int, product_detail: ProductBase, db: Session):
    
-    db_product = db.query(Product).filter(Product.id == product.id).first()
+    db_product = db.query(Product).filter(Product.id == product_id).first()
     
     
     if not db_product:
         return None
     
-    for key, value in product.dict(exclude_unset=True).items():
+    for key, value in product_detail.dict(exclude_unset=True).items():
         setattr(db_product, key, value)
     db.commit()
     db.refresh(db_product)
