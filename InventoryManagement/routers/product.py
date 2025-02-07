@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, status, HTTPException
-from InventoryManagement.databases import engine, get_db
+from databases import engine, get_db
 from sqlalchemy.orm import Session
 from ..curd import product as product_curd
 from ..schemas import product as product_schemas
@@ -20,7 +20,7 @@ def add_product(product: product_schemas.Product, db: Session = Depends(get_db))
 @router.get("/get_products/", response_model= List[product_schemas.ProductCreate], status_code = status.HTTP_200_OK)
 def get_products(db: Session = Depends(get_db)):
     all_products = product_curd.get_product(db= db)
-    if all_products is None:
+    if not all_products:
         raise HTTPException(detail="No Product is found!", status_code=status.HTTP_204_NO_CONTENT)
     return all_products 
 

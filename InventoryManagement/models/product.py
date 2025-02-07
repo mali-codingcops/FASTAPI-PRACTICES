@@ -1,4 +1,4 @@
-from InventoryManagement.databases import Base
+from databases import Base
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 class Product(Base):

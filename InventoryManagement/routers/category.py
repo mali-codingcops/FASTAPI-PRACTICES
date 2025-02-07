@@ -1,7 +1,7 @@
 from fastapi import APIRouter, status, Depends, HTTPException
 from ..schemas import category as category_schema
 from ..curd import category as category_crud
-from ..databases import get_db
+from databases import get_db
 from sqlalchemy.orm import Session
 from typing import List
 

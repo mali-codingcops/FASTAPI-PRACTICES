@@ -1,4 +1,4 @@
-from ..databases import Base
+from databases import Base
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
 class Category(Base):
