@@ -1,6 +1,6 @@
 # FAST API PRACTICES Project
 
-![Project FASTAPI](InventoryManagement/assets/images/logo.png)
+![Image](https://github.com/user-attachments/assets/a5e6f6b0-9708-4c43-b4ca-82779d93edf1)
 
 ## The following operation and command are used while creating this project.
 ## 1. Creating and setting up the github repository
