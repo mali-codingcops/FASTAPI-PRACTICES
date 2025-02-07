@@ -25,17 +25,17 @@ def delete_category(category_id: int, db: Session):
 
     return delete_category
 
-def update_category(category: CategoryCreated, db: Session):
+def update_category(category_id: int, update_category: CategoryCreated, db: Session):
     
-    update_category = db.query(Category).filter(Category.id == category.id).first()
+    category = db.query(Category).filter(Category.id == category_id).first()
 
     if not update_category:
         return None
     
-    for key, value in category.dict(exclude_unset=True).items():
-        setattr(update_category, key, value)
+    for key, value in update_category.dict(exclude_unset=True).items():
+        setattr(category, key, value)
     
     db.commit()
-    db.refresh(update_category)
+    db.refresh(category)
 
-    return update_category
+    return category
