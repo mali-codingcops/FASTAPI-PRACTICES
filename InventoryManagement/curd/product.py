@@ -3,8 +3,8 @@ from InventoryManagement.models.product import Product
 from InventoryManagement.schemas.product import ProductCreate, ProductBase
 
 
-def add_product(db: Session, product: ProductCreate):
-    add_product = Product(**product.model_dump())
+def add_product(db: Session, product: ProductCreate, image_path:str):
+    add_product = Product(**product.model_dump(), image_path = image_path)
     db.add(add_product)
     db.commit()
     db.refresh(add_product)
