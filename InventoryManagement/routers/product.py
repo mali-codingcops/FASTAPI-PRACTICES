@@ -1,19 +1,37 @@
-from fastapi import APIRouter, Depends, status, HTTPException
+from fastapi import APIRouter, Depends, status, HTTPException, File, UploadFile
+from fastapi.responses import JSONResponse
 from databases import engine, get_db
 from sqlalchemy.orm import Session
 from ..curd import product as product_curd
 from ..schemas import product as product_schemas
 from typing import List
+from pathlib import Path
+import os, shutil
+
+UPLOAD_DIR = Path('./InventoryManagement/asserts/upload_image')
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 router = APIRouter(
     tags= ['Products']
 )
 
-@router.post("/products", response_model=product_schemas.ProductCreate, status_code=status.HTTP_201_CREATED)
-def add_product(product: product_schemas.Product, db: Session = Depends(get_db)):
-    add_product = product_curd.add_product(db=db, product=product)
+@router.post("/products", response_model=product_schemas.Product, status_code=status.HTTP_201_CREATED)
+async def add_product(product: product_schemas.ProductCreate = Depends(), image: UploadFile = File(...), db:Session = Depends(get_db)):
+    
+    try:
+        
+        image_path = UPLOAD_DIR/image.filename
+        with open(image_path, 'wb') as buffer:
+            shutil.copyfileobj(image.file, buffer)
+
+    except Exception as e:
+        return JSONResponse(content={"message": str(e)}, status_code=500)
+    
+    add_product = product_curd.add_product(db=db, product=product, image_path = str(image_path.absolute)
+    )
     if add_product is None:
         raise HTTPException(detail="Unable to Add Product.", status_code=status.HTTP_304_NOT_MODIFIED)
+    
     return add_product
 
 @router.get("/get_products", response_model= List[product_schemas.ProductCreate], status_code = status.HTTP_200_OK)
